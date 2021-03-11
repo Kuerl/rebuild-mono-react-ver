@@ -7,7 +7,6 @@ import IoT from '../img/logo/IoTLogoWhite.png';
 import Mono from '../img/logo/MonoLogo.png';
 
 import {Link} from 'react-router-dom';
-import Choice from './routerChoice.js';
 
 const Waiting = () => {
     return (
@@ -41,22 +40,24 @@ const Login = () => {
         <div className="__login__back">
             <Logo />
             <Input />
-            <div className='footer'>
-            </div>
+            <div className='footer'></div>
         </div>
     );
 }
 
 const Root = () => {
-    useEffect (() => {
-        // setTimeout(function() {
-        //     return Login;
-        // }, 3000);
+    useEffect(()=>{
+        setTimeout(
+            () => {
+                document.getElementById('Waiting').style.display = 'none';
+                document.getElementById('Login').style.display = 'block';
+            }
+        ,3000);
     });
     return (
         <div>
-            {/* <Waiting /> */}
-            <Login />
+            <div id='Waiting' style={{display: 'block'}}><Waiting /></div>
+            <div id='Login' style={{display: 'none'}}><Login /></div>
         </div>
     );
 }

@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-position: 50%;
 }
 
 .__choice__table {
@@ -33,6 +34,10 @@
     border-radius: 7px;
     border: solid #BFC9CA;
     border-width: 5px;
+}
+
+.__choice__table img {
+    width: 85%;
 }
 
 .__choice__table label {

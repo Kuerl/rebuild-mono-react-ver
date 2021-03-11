@@ -1,0 +1,34 @@
+.__game {
+    background-image: url(../img/background/playBackground.jpg);
+    background-position: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.__game__Char {
+    height: 40vh;
+    background-color: aqua;
+}
+
+.__game__Char img {
+    width: 30vw;
+}
+
+.__game__Char__container {
+    height: 100%;
+}
+
+.__game__roll {
+    height: 60vh;
+    background-color: blueviolet;
+}
+
+.__game__roll h1 {
+    font-family: 'Akaya Telivigala', sans-serif;
+}
+
+#imgContainer {
+    background-color: bisque;
+    width: 80vw;
+}

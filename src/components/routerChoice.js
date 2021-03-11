@@ -4,10 +4,12 @@ import '../css/routerChoice.css';
 import CHAR from '../constants/constants.js';
 import MonoSmall from '../img/logo/monoLogoSmall.png';
 import {Link} from 'react-router-dom';
+// import Waiting from '../components/routerWaiting.js'
 
 function renderLi(data) {
     const listItems = data.map((item, id) =>
         <button>
+            <img src={item.charac.default} alt='Character'/>
             <label key = {id}>{item.name}</label>
         </button>
     );
@@ -20,7 +22,7 @@ const Sporadic = () => {
     return (
         <div className='Sporadic'>
             <img src={MonoSmall} alt='MonoLogoSmall'/>
-            <button><Link to='/Choice' style={{textDecoration: 'none'}}>STARTING GAME</Link></button>
+            <button><Link to='/Turn' style={{textDecoration: 'none'}}>STARTING GAME</Link></button>
         </div>
     );
 }
