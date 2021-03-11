@@ -1,0 +1,67 @@
+.__choice {
+    background-image: url('../img/background/GameBack.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.__choice__table {
+    height: 73vh;
+    width: 75vw;
+    background-color: rgb(0, 0, 0, 0.5);
+    margin: 0px 20px;
+    padding: 20px;
+    border-radius: 7px;
+    border: solid #28B463;
+    border-width: 3px;
+}
+
+.__choice__table nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4vh;
+}
+
+.__choice__table button {
+    width: 33vw;
+    height: 20vh;
+    margin: 5px;
+    border-radius: 7px;
+    border: solid #BFC9CA;
+    border-width: 5px;
+}
+
+.__choice__table label {
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: black;
+}
+
+.Sporadic {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.Sporadic img {
+    width: 65vw;
+    margin-bottom: 20vh;
+}
+
+.Sporadic button {
+    padding: 10px 20px;
+    margin-top: 50vh;
+    margin-bottom: 5vh;
+    border-radius: 7px;
+    background-color: #2ECC71;
+    color: white;
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-weight: 700;
+    border: solid #28B463;
+    border-width: 3px;
+}
