@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.__turn img {
+#imgMono {
     width: 60vw;
     position: absolute;
     top: 2vh;
@@ -25,7 +25,16 @@
     height: 100%;
 }
 
-.__turn__card label {
+.__turn__card__Link {
+  background-color: white;
+  border: none;
+}
+
+#turn-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     font-family: 'Akaya Telivigala', sans-serif;
     font-size: 60px;
     font-weight: 700;
@@ -42,13 +51,20 @@
         #F18F43 50%, 
         #8B9862 50%, 
         #8B9862 66.666%, 
-        #476098 66.666%, 
+        #A7489B 66.666%, 
         #476098 83.333%, 
-        #A7489B 83.333%);
+        #476098 83.333%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: rainbow-text-animation-rev 0.5s ease forwards;
     cursor: pointer;
+    border: none;
+}
+
+#turn-label p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 300px;
+  margin: 0;
 }
 
 .__turn__card label :hover {
@@ -69,9 +85,6 @@
       background-position: -9em 1em;
     }
   }
-  
-  /* Move the background and make it smaller. */
-  /* Animation shown when entering the page and after the hover animation. */
   @keyframes rainbow-text-animation-rev {
     0% {
       background-size: 300%;

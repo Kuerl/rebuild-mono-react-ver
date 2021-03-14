@@ -6,6 +6,7 @@
     align-items: center;
     flex-direction: column;
     background-position: 50%;
+    height: 100vh;
 }
 
 .__choice__table {

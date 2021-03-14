@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import '../css/body.css';
 import '../css/routerTurn.css';
 import MonoSmall from '../img/logo/monoLogoSmall.png';
@@ -7,32 +7,58 @@ import {Link} from 'react-router-dom';
 import Waiting from './routerWaiting.js';
 import client from '../constants/broker.js'
 
+
 const Label = (props) => {
+    const [turn, setVisible] = useState({id: '?.', disable: {pointerEvents: 'none'}});
+    client.on("message", (topic, message) => {
+        if (topic === props.PIN.PIN+'/turn') {
+            setVisible({id: message.toString()});
+        }
+        client.unsubscribe(props.PIN.PIN+'/turn');
+        console.log('Successfully Task - Unsub');
+    });
     return (
-        <div className='__turn__card__Link'>
-            <Link to='/Gaming' style={{textDecoration: 'none'}}>
-                <label>{props.data.visible.data}</label>
-            </Link>
-            <button onClick={console.log('Kuerl')}>HJKDHJKLSD</button>
+        <div class='__turn__card__Link'>
+                {/* <Link id='turn-label' to='/Gaming' style={turn.disable}>
+                    <label id={turn.label}>Kuerl</label>
+                </Link> */}
+                <Link id='turn-label' to='/Gaming' style={turn.disable}>
+                    <label>Your turn: <p>{turn.id}</p></label>
+                </Link>
         </div>
     );
 }
 
 const Turn = (props) => {
-    const [visible, setVisible] = useState({active: false, data: ''});
-    client.on("message", (topic, message) => {
-        if (message.toString() === '1') setVisible({active: true, data: 'Your turn will be displayed here!'});
-        client.unsubscribe('connect');
-        console.log('Successfully Task - Unsub');
-    });
+    const [turnDisplay, setTurnDisplay] = useState(false);
+    useEffect(
+        () => {
+            client.subscribe(props.location.state.PIN+'/ready', () => {
+                console.log('Connect to Topic for goto Turn');
+            });
+            client.subscribe(props.location.state.PIN+'/turn', () => {
+                console.log('Connect to Topic for checking Turn');
+            });
+        }
+    );
+    const ShowTurnComponent = () => {
+        client.on("message", (topic, message) => {
+            if (topic === props.location.state.PIN+'/ready' & message.toString() === '1') setTurnDisplay(true);;
+        });
+        return ( turnDisplay ?
+            <div>
+                <img id='imgMono' src={MonoSmall} alt='MonoLogo'/>
+                <div className='__turn__card'>
+                    <Label PIN={{PIN: props.location.state.PIN}} />
+                </div>
+            </div>
+            :
+            <Waiting/>
+        );
+    }
     return (
         <div className='__turn'>
-            <img src={MonoSmall} alt='MonoLogo'/>
-            <div className='__turn__card' onClick={
-                console.log(props)
-            }>
-                <Label data={{visible: visible}}/>
-            </div>
+            <ShowTurnComponent />
         </div>
     );
 }
