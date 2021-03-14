@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/body.css';
 import '../css/routerChoice.css';
 import CHAR from '../constants/constants.js';
@@ -7,14 +7,10 @@ import {Link} from 'react-router-dom';
 import Waiting from './routerWaiting';
 import client from '../constants/broker';
 
-client.subscribe('connect', () => {
-    console.log('Connect to Topic for Switch');
-});
-
 const Table = (props) => {
     const RenderLabel = (data) => {
         const listItems = data.map((item, id) =>
-            <button id='User' onClick={()=>{props.getID.setVisible({active: true, id: item.id});}}>
+            <button id='User' onClick={()=>{props.getID.setVisible({active: true, disabled: 'enabled-link', id: item.id.toString()});}}>
                 <img src={item.charac.default} alt='Character'/>
                 <label key={id}>{item.name}</label>
             </button>
@@ -30,10 +26,10 @@ const Table = (props) => {
     );
 }
 
-const ShowChoice = () => {
-    const [visible, setVisible] = useState({active: false, id: ''});
+const ShowChoice = (props) => {
+    const [visible, setVisible] = useState({active: false, id: '', disabled: 'disabled-link'});
     client.on("message", (topic, message) => {
-        if (message.toString()==='1') setVisible({active: true});
+        if (message.toString() === '1') setVisible({active: true, disabled: 'disabled-link'});
         client.unsubscribe('connect');
         console.log('Successfully Task - Unsub');
     });
@@ -41,9 +37,11 @@ const ShowChoice = () => {
         <div className='__choice'>
         <Table getID = {{visible: visible, setVisible: setVisible}}/>
             <img id='MonoLogo' src={MonoSmall} alt='MonoLogoSmall'/>
-            <button id='StartBtn'><Link to={{pathname: '/Turn'}} onClick = {() => {
+            <Link className={visible.disabled} id='StartBtn' to={{pathname: '/Turn', state: {PIN: props.PIN.PIN, UserID: visible.id}}} onClick = {() => {
                 console.log(visible);
-            }} style={{textDecoration: 'none', color: 'white'}}>STARTING GAME</Link></button>
+                client.publish(props.PIN.PIN+'/ready', visible.id);
+            }} style={{textDecoration: 'none'}} disabled>STARTING GAME
+            </Link>
         </div>
         :
         <div>
@@ -52,10 +50,17 @@ const ShowChoice = () => {
     );
 }
 
-const Choice = () => {
+const Choice = (props) => {
+    useEffect(
+        () => {
+            client.subscribe(props.location.state.PIN+'/connect', () => {
+                console.log('Connect to Topic for Switch');
+            });
+        }
+    );
     return (
         <div>
-            {ShowChoice()}
+            <ShowChoice PIN={{PIN: props.location.state.PIN}}/>
         </div>
     );
 }

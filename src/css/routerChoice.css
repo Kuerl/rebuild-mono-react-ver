@@ -69,3 +69,13 @@
     border: solid #28B463;
     border-width: 3px;
 }
+
+/* ~~~~~~ */
+
+.disabled-link {
+    pointer-events: none;
+}
+
+.enabled-link {
+    font-size: 25px;
+}
