@@ -53,15 +53,14 @@
     flex-direction: column;
 }
 
-.Sporadic img {
-    width: 65vw;
-    margin-bottom: 20vh;
+#MonoLogo {
+    width: 60vw;
+    position: absolute;
+    top: 0;
 }
 
-.Sporadic button {
+#StartBtn {
     padding: 10px 20px;
-    margin-top: 50vh;
-    margin-bottom: 5vh;
     border-radius: 7px;
     background-color: #2ECC71;
     color: white;

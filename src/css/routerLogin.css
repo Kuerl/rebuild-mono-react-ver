@@ -50,6 +50,7 @@ img {
     border-radius: 10px;
     font-size: 15px;
     font-weight: 700;
+    text-align: center;
 }
 
 .__login__input button {
