@@ -1,10 +1,11 @@
 import React from 'react';
 import '../css/body.css';
 import '../css/routerGaming.css';
+import CHAR from '../constants/constants.js';
 
 const Rolling = () => {
     return (
-        <div class='__game__roll'>
+        <div className='__game__roll'>
             <button>
                 <h1>ROLL HERE!</h1>
             </button>
@@ -12,11 +13,12 @@ const Rolling = () => {
     );
 }
 
-const YourChar = () => {
+const YourChar = (props) => {
     return (
         <div className='__game__Char'>
             <div className='__game__Char__container' id='imgContainer'>
-                <img alt='Character'/>
+                {console.log(CHAR[props.data-1].charac)}
+                <img src={CHAR[props.data].charac.default} alt='Character'/>
             </div>
             <div className='__game__Char__container'>
                 <h1>THINGS</h1>
@@ -25,10 +27,10 @@ const YourChar = () => {
     );
 }
 
-const Gaming = () => {
+const Gaming = (props) => {
     return (
         <div className='__game'>
-            <YourChar />
+            <YourChar data={props.location.state.UserID}/>
             <Rolling />
         </div>
     );

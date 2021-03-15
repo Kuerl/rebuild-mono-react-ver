@@ -7,8 +7,8 @@
 }
 
 .__game__Char {
-    height: 40vh;
-    background-color: aqua;
+    height: 30vh;
+    /* background-color: aqua; */
 }
 
 .__game__Char img {
@@ -20,8 +20,7 @@
 }
 
 .__game__roll {
-    height: 60vh;
-    background-color: blueviolet;
+    height: 70vh;
 }
 
 .__game__roll h1 {
@@ -29,6 +28,5 @@
 }
 
 #imgContainer {
-    background-color: bisque;
-    width: 80vw;
+    width: 50vw;
 }

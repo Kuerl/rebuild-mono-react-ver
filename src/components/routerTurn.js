@@ -9,20 +9,17 @@ import client from '../constants/broker.js'
 
 
 const Label = (props) => {
-    const [turn, setVisible] = useState({id: '?.', disable: {pointerEvents: 'none'}});
+    const [turn, setVisible] = useState({id: '.!.', disable: {pointerEvents: 'none'}});
     client.on("message", (topic, message) => {
-        if (topic === props.PIN.PIN+'/turn') {
+        if (topic === props.redata.PIN+'/turn') {
             setVisible({id: message.toString()});
         }
-        client.unsubscribe(props.PIN.PIN+'/turn');
+        client.unsubscribe(props.redata.PIN+'/turn');
         console.log('Successfully Task - Unsub');
     });
     return (
-        <div class='__turn__card__Link'>
-                {/* <Link id='turn-label' to='/Gaming' style={turn.disable}>
-                    <label id={turn.label}>Kuerl</label>
-                </Link> */}
-                <Link id='turn-label' to='/Gaming' style={turn.disable}>
+        <div className='__turn__card__Link'>
+                <Link id='turn-label' to={{pathname: '/Gaming', state: {PIN: props.redata.PIN, UserID: props.redata.UserID}}} style={turn.disable}>
                     <label>Your turn: <p>{turn.id}</p></label>
                 </Link>
         </div>
@@ -49,7 +46,7 @@ const Turn = (props) => {
             <div>
                 <img id='imgMono' src={MonoSmall} alt='MonoLogo'/>
                 <div className='__turn__card'>
-                    <Label PIN={{PIN: props.location.state.PIN}} />
+                    <Label redata={{PIN: props.location.state.PIN, UserID: props.location.state.UserID}} />
                 </div>
             </div>
             :
@@ -58,7 +55,7 @@ const Turn = (props) => {
     }
     return (
         <div className='__turn'>
-            <ShowTurnComponent />
+            <ShowTurnComponent redata={{PIN: props.location.state.PIN, UserID: props.location.state.UserID}}/>
         </div>
     );
 }
