@@ -11,10 +11,10 @@ import client from '../constants/broker.js'
 const Label = (props) => {
     const [turn, setVisible] = useState({id: '.!.', disable: {pointerEvents: 'none'}});
     client.on("message", (topic, message) => {
-        if (topic === props.redata.PIN+'/turn') {
+        if (topic === props.redata.PIN+'/connect/order') {
             setVisible({id: message.toString()});
         }
-        client.unsubscribe(props.redata.PIN+'/turn');
+        client.unsubscribe(props.redata.PIN+'/connect/order');
         console.log('Successfully Task - Unsub');
     });
     return (
@@ -30,17 +30,17 @@ const Turn = (props) => {
     const [turnDisplay, setTurnDisplay] = useState(false);
     useEffect(
         () => {
-            client.subscribe(props.location.state.PIN+'/ready', () => {
+            client.subscribe(props.location.state.PIN+'/connect/ready', () => {
                 console.log('Connect to Topic for goto Turn');
             });
-            client.subscribe(props.location.state.PIN+'/turn', () => {
+            client.subscribe(props.location.state.PIN+'/connect/order', () => {
                 console.log('Connect to Topic for checking Turn');
             });
         }
     );
     const ShowTurnComponent = () => {
         client.on("message", (topic, message) => {
-            if (topic === props.location.state.PIN+'/ready' & message.toString() === '1') setTurnDisplay(true);;
+            if (topic === props.location.state.PIN+'/connect/ready' & message.toString() === '1') {setTurnDisplay(true); client.unsubscribe(props.location.state.PIN+'/connect/ready');};
         });
         return ( turnDisplay ?
             <div>

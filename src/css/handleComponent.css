@@ -1,0 +1,286 @@
+
+.__game__roll {
+    height: 80vh;
+}
+
+.__game__roll h1 {
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-size: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-weight: 700;
+    background: #CA4246;
+    background-color: #CA4246;
+    background-size: 57%;
+    background-repeat: repeat;
+    background-clip: unset;
+    background: conic-gradient(
+        #CA4246 16.666%, 
+        #E16541 16.666%, 
+        #E16541 33.333%, 
+        #F18F43 33.333%, 
+        #F18F43 50%, 
+        #8B9862 50%, 
+        #8B9862 66.666%, 
+        #A7489B 66.666%, 
+        #476098 83.333%, 
+        #476098 83.333%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-animation-rev 0.5s ease forwards;
+    cursor: pointer;
+    border: none;
+}
+
+.__game__roll button {
+    height: 40vh;
+    width: 55vw;
+    border-radius: 5%;
+    border: solid 7px;
+    border-color: #3498DB;
+    outline: none;
+}
+
+.__game__roll button:active {
+    border-color: #DE3163;
+}
+
+@keyframes rainbow-text-animation {
+    0% {
+      background-size: 57%;
+      background-position: 0 0;
+    }
+    20% {
+      background-size: 57%;
+      background-position: 0 1em;
+    }
+    100% {
+      background-size: 300%;
+      background-position: -9em 1em;
+    }
+  }
+  @keyframes rainbow-text-animation-rev {
+    0% {
+      background-size: 300%;
+      background-position: -9em 1em;
+    }
+    20% {
+      background-size: 57%;
+      background-position: 0 1em;
+    }
+    100% {
+      background-size: 57%;
+      background-position: 0 0;
+    }
+  }
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.__game__buy {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 70vw;
+    height: 55vh;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    border: solid 10px;
+    border-color: lightskyblue;
+}
+
+.__game__buy h2, h3 {
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-size: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-weight: 700;
+    background: #CA4246;
+    background-color: #CA4246;
+    background-size: 57%;
+    background-repeat: repeat;
+    background-clip: unset;
+    background: conic-gradient(
+        #CA4246 16.666%, 
+        #E16541 16.666%, 
+        #E16541 33.333%, 
+        #F18F43 33.333%, 
+        #F18F43 50%, 
+        #8B9862 50%, 
+        #8B9862 66.666%, 
+        #A7489B 66.666%, 
+        #476098 83.333%, 
+        #476098 83.333%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-animation-rev 0.5s ease forwards;
+    cursor: pointer;
+    border: none;
+}
+
+.__game__buy button {
+    margin: 10px;
+    width: 40vw;
+}
+
+.__game__buy button h3 {
+    margin: 0px;
+}
+
+.__game__submit {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 70vw;
+    height: 40vh;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    border: solid 10px;
+    border-color: lightskyblue;
+}
+
+.__game__submit h2, h3 {
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-size: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-weight: 700;
+    background: #CA4246;
+    background-color: #CA4246;
+    background-size: 57%;
+    background-repeat: repeat;
+    background-clip: unset;
+    background: conic-gradient(
+        #CA4246 16.666%, 
+        #E16541 16.666%, 
+        #E16541 33.333%, 
+        #F18F43 33.333%, 
+        #F18F43 50%, 
+        #8B9862 50%, 
+        #8B9862 66.666%, 
+        #A7489B 66.666%, 
+        #476098 83.333%, 
+        #476098 83.333%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-animation-rev 0.5s ease forwards;
+    cursor: pointer;
+    border: none;
+}
+
+.__game__submit button {
+    height: auto;
+    width: 50vw;
+    padding: 10px 0px;
+    background-color: unset;
+    border: solid 10px;
+    border-radius: 10px;
+    border-color: #3498DB;
+    outline: none;
+}
+
+.__game__submit button:active {
+    border-color: #DE3163;
+}
+
+.__game__submit button h3 {
+    margin: 0px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.__game__input input {
+    padding: 10px;
+    font-size: larger;
+    margin-bottom: 10px;
+    width: 80%
+}
+
+.__game__input button h2 {
+    margin: 0px;
+}
+
+.__game__input {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 70vw;
+    height: 40vh;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    border: solid 10px;
+    border-color: lightskyblue;
+}
+
+.__game__input h2, h3 {
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-size: 50px;
+    margin: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-weight: 700;
+    background: #CA4246;
+    background-color: #CA4246;
+    background-size: 57%;
+    background-repeat: repeat;
+    background-clip: unset;
+    background: conic-gradient(
+        #CA4246 16.666%, 
+        #E16541 16.666%, 
+        #E16541 33.333%, 
+        #F18F43 33.333%, 
+        #F18F43 50%, 
+        #8B9862 50%, 
+        #8B9862 66.666%, 
+        #A7489B 66.666%, 
+        #476098 83.333%, 
+        #476098 83.333%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-animation-rev 0.5s ease forwards;
+    cursor: pointer;
+    border: none;
+}
+
+.__game__input button {
+    height: auto;
+    width: 50vw;
+    padding: 10px 0px;
+    background-color: unset;
+    border: solid 10px;
+    border-radius: 10px;
+    border-color: #3498DB;
+    outline: none;
+}
+
+.__game__input button:active {
+    border-color: #DE3163;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.__game__warn {
+    background-color: white;
+    height: 55vh;
+    width: 70vw;
+    border-radius: 10px;
+    border: solid 10px;
+    border-color: #EC385E;
+    display: flex;
+    flex-direction: column;
+}

@@ -46,6 +46,9 @@ const Root = () => {
                             console.log('Send the pin to MQTT Broker');
                                 client.publish('onConnect', PIN);
                                 console.log('\tSent PIN to the broker');
+                                client.subscribe('onConnect/'+PIN, () => {
+                                    console.log('Connect to Topic for Switch');
+                                });
                             console.log('Going to choice bar');
                         }}>ENTER ROOM</Link></button>
                 </div>

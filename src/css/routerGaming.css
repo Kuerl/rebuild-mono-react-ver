@@ -1,13 +1,15 @@
 .__game {
-    background-image: url(../img/background/playBackground.jpg);
+    background-image: url(../img/background/pgd.jpg);
     background-position: 50%;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .__game__Char {
-    height: 30vh;
+    height: 20vh;
     /* background-color: aqua; */
 }
 
@@ -17,14 +19,15 @@
 
 .__game__Char__container {
     height: 100%;
-}
-
-.__game__roll {
-    height: 70vh;
-}
-
-.__game__roll h1 {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     font-family: 'Akaya Telivigala', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
 }
 
 #imgContainer {

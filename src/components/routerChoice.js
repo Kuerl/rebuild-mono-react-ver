@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import '../css/body.css';
 import '../css/routerChoice.css';
 import CHAR from '../constants/constants.js';
@@ -30,7 +30,7 @@ const ShowChoice = (props) => {
     const [visible, setVisible] = useState({active: false, id: '', disabled: 'disabled-link'});
     client.on("message", (topic, message) => {
         if (message.toString() === '1') setVisible({active: true, disabled: 'disabled-link'});
-        client.unsubscribe('connect');
+        client.unsubscribe('onConnect/'+props.PIN.PIN);
         console.log('Successfully Task - Unsub');
     });
     return(visible.active ?
@@ -39,7 +39,8 @@ const ShowChoice = (props) => {
             <img id='MonoLogo' src={MonoSmall} alt='MonoLogoSmall'/>
             <Link className={visible.disabled} id='StartBtn' to={{pathname: '/Turn', state: {PIN: props.PIN.PIN, UserID: visible.id}}} onClick = {() => {
                 console.log(visible);
-                client.publish(props.PIN.PIN+'/ready', visible.id);
+                client.subscribe(props.PIN.PIN+"/connect/order");
+                client.publish(props.PIN.PIN+'/playerid', visible.id);
             }} style={{textDecoration: 'none'}} disabled>STARTING GAME
             </Link>
         </div>
@@ -51,13 +52,6 @@ const ShowChoice = (props) => {
 }
 
 const Choice = (props) => {
-    useEffect(
-        () => {
-            client.subscribe(props.location.state.PIN+'/connect', () => {
-                console.log('Connect to Topic for Switch');
-            });
-        }
-    );
     return (
         <div>
             <ShowChoice PIN={{PIN: props.location.state.PIN}}/>
