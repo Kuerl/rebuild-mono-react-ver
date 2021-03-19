@@ -13,13 +13,18 @@ const Label = (props) => {
     client.on("message", (topic, message) => {
         if (topic === props.redata.PIN+'/connect/order') {
             setVisible({id: message.toString()});
-        }
         client.unsubscribe(props.redata.PIN+'/connect/order');
         console.log('Successfully Task - Unsub');
+        }
     });
     return (
         <div className='__turn__card__Link'>
-                <Link id='turn-label' to={{pathname: '/Gaming', state: {PIN: props.redata.PIN, UserID: props.redata.UserID}}} style={turn.disable}>
+                <Link id='turn-label' to={{pathname: '/Gaming', state: {PIN: props.redata.PIN, UserID: props.redata.UserID}}} style={turn.disable} 
+                    onClick={()=>{
+                        console.log(props.redata.PIN+'/turn/confirm');
+                        client.publish(props.redata.PIN+'/turn/confirm', props.redata.UserID.toString());
+                    }}    
+                >
                     <label>Your turn: <p>{turn.id}</p></label>
                 </Link>
         </div>
