@@ -22,7 +22,6 @@ const YourChar = (props) => {
 const Gaming = (props) => {
   const [caseNum, setCaseNum] = useState(-1);
 
-  function caseComponent() {
     client.on("message", (topic, message) => {
       if(topic === props.location.state.PIN + "/gameplayP/" + props.location.state.UserID + "/buy") {
         console.log(topic === props.location.state.PIN + "/gameplayP/" + props.location.state.UserID + "/buy");
@@ -48,7 +47,6 @@ const Gaming = (props) => {
         setCaseNum(6);
       }
     });
-  }
 
     useEffect(
         () => {
@@ -80,6 +78,10 @@ const Gaming = (props) => {
                 if (!err) {
                 }
               });
+              client.subscribe(props.location.state.PIN + "/gameplayP/" + props.location.state.UserID + "/dice", function (err) {
+                if (!err) {
+                }
+              });
               client.subscribe(props.location.state.PIN + "/gameplayP/turn", function (err) {
                 if (!err) {
                 }
@@ -91,9 +93,9 @@ const Gaming = (props) => {
             {
               caseNum === 0 ?
               <Warning data={{PIN: props.location.state.PIN, UserID: props.location.state.UserID}}/> : 
-              caseNum === 1 ?
+              caseNum === 1 || caseNum === 3 ?
               <Buy data={{PIN: props.location.state.PIN, UserID: props.location.state.UserID}} /> :
-              caseNum === 2 || caseNum === 3 || caseNum === 5 ?
+              caseNum === 2 || caseNum === 5 ?
               <Submit data={{PIN: props.location.state.PIN, UserID: props.location.state.UserID}} /> :
               caseNum === 4 ?
               <Input data={{PIN: props.location.state.PIN, UserID: props.location.state.UserID}} /> :

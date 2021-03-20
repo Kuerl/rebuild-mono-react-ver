@@ -11,17 +11,19 @@ import client from '../constants/broker.js'
 const Label = (props) => {
     const [turn, setVisible] = useState({id: '.!.', disable: {pointerEvents: 'none'}});
     client.on("message", (topic, message) => {
-        if (topic === props.redata.PIN+'/connect/order') {
+        if (topic === props.redata.PIN+'/connect/order/'+props.redata.UserID) {
             setVisible({id: message.toString()});
+            // console.log(turn.id)
         client.unsubscribe(props.redata.PIN+'/connect/order');
-        console.log('Successfully Task - Unsub');
+        // console.log('Successfully Task - Unsub');
         }
     });
     return (
         <div className='__turn__card__Link'>
+            {console.log(props.redata.PIN+'/connect/order'+props.redata.UserID)}
                 <Link id='turn-label' to={{pathname: '/Gaming', state: {PIN: props.redata.PIN, UserID: props.redata.UserID}}} style={turn.disable} 
                     onClick={()=>{
-                        console.log(props.redata.PIN+'/turn/confirm');
+                        // console.log(props.redata.PIN+'/turn/confirm');
                         client.publish(props.redata.PIN+'/turn/confirm', props.redata.UserID.toString());
                     }}    
                 >
@@ -38,7 +40,7 @@ const Turn = (props) => {
             client.subscribe(props.location.state.PIN+'/connect/ready', () => {
                 console.log('Connect to Topic for goto Turn');
             });
-            client.subscribe(props.location.state.PIN+'/connect/order', () => {
+            client.subscribe(props.location.state.PIN+'/connect/order/'+props.location.state.UserID, () => {
                 console.log('Connect to Topic for checking Turn');
             });
         }
